@@ -13,14 +13,15 @@ module ETL #:nodoc:
       # Return each row
       def each
         Dir.glob(file).each do |file|
+          lines_skipped = 0
           open(file).each do |line|
             row = {}
-            lines_skipped = 0
+            if lines_skipped < source.skip_lines
+              lines_skipped += 1
+              next
+            end
             fields.each do |name, f|
-              if lines_skipped < source.skip_lines
-                lines_skipped += 1
-                next
-              end
+
               # TODO make strip optional?
               row[name] = line[f.field_start, f.field_length].strip
             end
