@@ -60,7 +60,7 @@ module ETL #:nodoc:
         conditions = []
         row.each do |k,v| 
           if columns.nil? || columns.include?(k.to_sym)
-            conditions << "#{k} = #{conn.quote(v)}" unless skip?(k.to_sym)
+            conditions << "'#{k}' = #{conn.quote(v)}" unless (skip?(k.to_sym) || v.blank?)
           end
         end
         q << conditions.join(" AND ")
