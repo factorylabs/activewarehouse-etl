@@ -65,7 +65,7 @@ module AWETL
 
   def self.spec(package_prefix = '')
     Gem::Specification.new do |s|
-      s.name = 'activewarehouse-etl'
+      s.name = 'factorylabs-activewarehouse-etl'
       s.version = AWETL::PKG_VERSION
       s.summary = "Pure Ruby ETL package."
       s.description = <<-EOF
@@ -76,7 +76,7 @@ module AWETL
       s.add_dependency('activesupport',       '>= 2.1.0')
       s.add_dependency('activerecord',        '>= 2.1.0')
       s.add_dependency('fastercsv',           '>= 1.2.0')
-      s.add_dependency('adapter_extensions',  '>= 0.5.0')
+      s.add_dependency('factorylabs-adapter_extensions',  '>= 0.5.1')
 
       s.rdoc_options << '--exclude' << '.'
       s.has_rdoc = false
